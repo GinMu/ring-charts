@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>铃声大全charts</title>
     <script src="js/lib/jquery-3.0.0.min.js" charset="utf-8"></script>
@@ -8,14 +9,18 @@
     <script src="js/lib/data.js" charset="utf-8"></script>
     <script src="js/ring-charts.js" charset="utf-8"></script>
     <link rel="stylesheet" href="css/ring-charts.css" media="screen" title="no title" charset="utf-8">
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="container" class="container">
     </div>
     <script type="text/javascript">
-      $(document).ready(function(){
-        $.ringCharts();
-      });
+        $(document).ready(function() {
+            var title = "铃声大全日活数量";
+            var filename = "ring.log";
+            $.ringCharts(title, filename);
+        });
     </script>
-  </body>
+</body>
+
 </html>

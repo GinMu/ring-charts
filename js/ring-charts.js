@@ -1,7 +1,7 @@
 (function($, undefined) {
-    $.ringCharts = function() {
+    $.ringCharts = function(title,filename) {
         var title = {
-            text: '铃声大全日活数量'
+            text: title
         };
         var yAxis = {
             alternateGridColor: '#fbfbfb',
@@ -32,7 +32,10 @@
         json.plotOptions = plotOptions;
         json.legend = legend;
         $.ajax({
-            url: 'http://localhost:8080/devices',
+            url: 'http://localhost:8080',
+            data: {
+                filename: filename
+            },
             type: 'get',
             dataType: 'text',
             success: function(csv) {
