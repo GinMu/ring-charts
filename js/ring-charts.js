@@ -1,5 +1,5 @@
 (function($, undefined) {
-    $.ringCharts = function(title,filename) {
+    $.logCharts = function(title,filename) {
         var title = {
             text: title
         };
