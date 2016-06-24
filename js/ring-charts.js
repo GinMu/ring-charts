@@ -1,7 +1,7 @@
 (function($, undefined) {
-    $.logCharts = function(title,filename) {
+    $.logCharts = function(titles,filename) {
         var title = {
-            text: title
+            text: titles
         };
         var yAxis = {
             endOnTick: true,
