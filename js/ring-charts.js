@@ -4,7 +4,6 @@
             text: title
         };
         var yAxis = {
-            alternateGridColor: '#fbfbfb',
             endOnTick: true,
             gridLineColor: '#c0c0c0',
             gridLineDashStyle: 'longdash'
@@ -12,9 +11,9 @@
         var plotOptions = {
             line: {
                 dataLabels: {
-                    enabled: true
+                    enabled: false
                 },
-                enableMouseTracking: false
+                enableMouseTracking: true
             }
         };
         var tooltip = {
