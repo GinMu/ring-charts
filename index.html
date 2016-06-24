@@ -7,17 +7,43 @@
     <script src="js/lib/jquery-3.0.0.min.js" charset="utf-8"></script>
     <script src="js/lib/highcharts.js" charset="utf-8"></script>
     <script src="js/lib/data.js" charset="utf-8"></script>
+    <script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
     <script src="js/ring-charts.js" charset="utf-8"></script>
     <link rel="stylesheet" href="css/ring-charts.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
 </head>
 
 <body>
+    <div class="dropdown clearfix" style="text-align:center;margin-top:50px;">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span id="title" filename="devices.log">设备数量</span>
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu" style="left:43.5%">
+            <li text="设备数量" filename="devices.log"><a href="#">设备数量</a></li>
+            <li text="新增彩铃用户" filename="new_vip_user.log"><a href="#">新增彩铃用户</a></li>
+        </ul>
+    </div>
+
     <div id="container" class="container">
     </div>
     <script type="text/javascript">
+        var dropdownMenu;
         $(document).ready(function() {
-            var title = "铃声大全日活数量";
-            var filename = "ring.log";
+            dropdownMenu = $("#title");
+            var initTitle = dropdownMenu.text();
+            var initFilename = dropdownMenu.attr('filename');
+            $.logCharts(initTitle, initFilename);
+        });
+        $("ul li").off("click").on("click", function() {
+            var self = this;
+            var currentTitle = dropdownMenu.text();
+            var title = self.getAttribute("text");
+            var filename = self.getAttribute("filename");
+            if (currentTitle === title) {
+                return;
+            }
+            dropdownMenu.text(title);
             $.logCharts(title, filename);
         });
     </script>

@@ -1,5 +1,5 @@
 .container {
-    width: "550px";
-    height: "400px";
-    margin: "0 auto";
+    width: "auto";
+    height: "auto";
+    margin: 100px auto 0;
 }

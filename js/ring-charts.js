@@ -12,9 +12,9 @@
         var plotOptions = {
             line: {
                 dataLabels: {
-                    enabled: false
+                    enabled: true
                 },
-                enableMouseTracking: true
+                enableMouseTracking: false
             }
         };
         var tooltip = {
