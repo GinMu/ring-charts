@@ -1,0 +1,12 @@
+{
+	"jshint_src": [
+		"js/*.js"
+	],
+	"htmlhint_src": [
+		"*.html"
+	],
+	"uglify_src": [
+		"js/*.js"
+	],
+	"uglify_dest": "dist"
+}
