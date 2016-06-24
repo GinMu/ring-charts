@@ -44,6 +44,6 @@ gulp.task("livereload", function() {
 
 gulp.watch(config.jshint_src, ["jshint"]);
 gulp.watch(config.htmlhint_src, ["htmlhint"]);
-gulp.watch(["index.html"], ["livereload"]);
+gulp.watch(["index.html","js/ring-charts.js"], ["livereload"]);
 //gulp.watch(config.uglify_src, ["minify-js"]);
 gulp.task("default", ["jshint", "htmlhint", "livereload"]);
