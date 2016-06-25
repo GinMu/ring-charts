@@ -1,6 +1,6 @@
 (function($, undefined) {
     $.logs = {
-        path: './logs/',
+        path: 'logs/',
         getPath: function(filename) {
             return this.path + filename;
         }
@@ -57,7 +57,7 @@
         json.plotOptions = plotOptions;
         json.legend = legend;
         $.ajax({
-            url: $.logs.getPath(filename),
+            url: filename,
             type: 'get',
             dataType: 'text',
             success: function(csv) {
