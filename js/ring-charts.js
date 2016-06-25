@@ -32,7 +32,10 @@
         };
         var tooltip = {
             crosshairs: true,
-            shared: true
+            shared: true,
+            dateTimeLabelFormats:{
+              day: '%Y/%m/%d %a'
+            }
         };
         var legend = {
             y: 20
