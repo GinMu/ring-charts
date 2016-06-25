@@ -1,5 +1,5 @@
 (function($, undefined) {
-    $.logCharts = function(titles,filename) {
+    $.logCharts = function(titles, filename) {
         var title = {
             text: titles
         };
@@ -16,6 +16,9 @@
                 enableMouseTracking: true
             }
         };
+        var credits = {
+            enabled: false
+        };
         var tooltip = {
             crosshairs: true,
             shared: true
@@ -27,6 +30,7 @@
         var json = {};
         json.title = title;
         json.yAxis = yAxis;
+        json.credits = credits;
         json.tooltip = tooltip;
         json.plotOptions = plotOptions;
         json.legend = legend;
@@ -45,5 +49,18 @@
                 $('#container').highcharts(json);
             }
         });
+    };
+
+    $.seriesUpdate = function(labels,tracking){
+      var chart = $('#container').highcharts();
+      var series = chart.series;
+      for (var i in series) {
+        series[i].update({
+          dataLabels: {
+              enabled: labels
+          },
+          enableMouseTracking: tracking
+        });
+      }
     };
 }(jQuery, window));

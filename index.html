@@ -16,7 +16,7 @@
 
 <body>
     <div class="bs-example" data-example-id="single-button-dropdown" style="text-align:center;margin-top:50px;">
-        <span>日志类型:</span>
+        <span style="margin-right:5px;">日志类型：</span>
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span id="title" filename="devices.log">设备数量</span>
@@ -27,6 +27,9 @@
                 <li text="新增彩铃用户" filename="new_vip_user.log"><a href="#">新增彩铃用户</a></li>
             </ul>
         </div>
+        <label class="checkbox-inline" style="margin-left:20px;">
+            <input type="checkbox" id="checkbox" value="option1"> 数据标识
+        </label>
     </div>
     <div id="container" class="container">
     </div>
@@ -46,8 +49,24 @@
             if (currentTitle === title) {
                 return;
             }
+            if ($('#checkbox').is(':checked')) {
+                $('#checkbox')[0].checked = false;
+            }
             dropdownMenu.text(title);
             $.logCharts(title, filename);
+        });
+        $('#checkbox').off('click').on('click', function(e) {
+            var checked = $(this).is(':checked');
+            var labels,
+                tracking;
+            if (checked) {
+                labels = true;
+                tracking = false;
+            } else {
+                labels = false;
+                tracking = true;
+            }
+            $.seriesUpdate(labels, tracking);
         });
     </script>
 </body>
