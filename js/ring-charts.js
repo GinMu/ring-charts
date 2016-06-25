@@ -3,6 +3,13 @@
         var title = {
             text: titles
         };
+        var xAxis = {
+            endOnTick: true,
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                day: '%y/%m/%d'
+            }
+        }
         var yAxis = {
             endOnTick: true,
             gridLineColor: '#c0c0c0',
@@ -11,7 +18,11 @@
         var plotOptions = {
             line: {
                 dataLabels: {
-                    enabled: false
+                    enabled: false,
+                    allowOverlap: true,
+                    rotation: 350,
+                    y: -15,
+                    x: 10
                 },
                 enableMouseTracking: true
             }
@@ -29,6 +40,7 @@
 
         var json = {};
         json.title = title;
+        json.xAxis = xAxis;
         json.yAxis = yAxis;
         json.credits = credits;
         json.tooltip = tooltip;
@@ -51,16 +63,16 @@
         });
     };
 
-    $.seriesUpdate = function(labels,tracking){
-      var chart = $('#container').highcharts();
-      var series = chart.series;
-      for (var i in series) {
-        series[i].update({
-          dataLabels: {
-              enabled: labels
-          },
-          enableMouseTracking: tracking
-        });
-      }
+    $.seriesUpdate = function(labels, tracking) {
+        var chart = $('#container').highcharts();
+        var series = chart.series;
+        for (var i in series) {
+            series[i].update({
+                dataLabels: {
+                    enabled: labels
+                },
+                enableMouseTracking: tracking
+            });
+        }
     };
 }(jQuery, window));
