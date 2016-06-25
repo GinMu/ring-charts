@@ -15,17 +15,19 @@
 </head>
 
 <body>
-    <div class="dropdown clearfix" style="text-align:center;margin-top:50px;">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            <span id="title" filename="devices.log">设备数量</span>
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu" style="left:43.5%">
-            <li text="设备数量" filename="devices.log"><a href="#">设备数量</a></li>
-            <li text="新增彩铃用户" filename="new_vip_user.log"><a href="#">新增彩铃用户</a></li>
-        </ul>
+    <div class="bs-example" data-example-id="single-button-dropdown" style="text-align:center;margin-top:50px;">
+        <span>日志类型:</span>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span id="title" filename="devices.log">设备数量</span>
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                <li text="设备数量" filename="devices.log"><a href="#">设备数量</a></li>
+                <li text="新增彩铃用户" filename="new_vip_user.log"><a href="#">新增彩铃用户</a></li>
+            </ul>
+        </div>
     </div>
-
     <div id="container" class="container">
     </div>
     <script type="text/javascript">
