@@ -57,7 +57,7 @@
         json.plotOptions = plotOptions;
         json.legend = legend;
         $.ajax({
-            url: filename,
+            url: $.logs.getPath(filename),
             type: 'get',
             dataType: 'text',
             success: function(csv) {
