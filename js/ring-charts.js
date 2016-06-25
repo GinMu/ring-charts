@@ -1,4 +1,11 @@
 (function($, undefined) {
+    $.logs = {
+        path: './logs/',
+        getPath: function(filename) {
+            return this.path + filename;
+        }
+    };
+
     $.logCharts = function(titles, filename) {
         var title = {
             text: titles
@@ -9,7 +16,7 @@
             dateTimeLabelFormats: {
                 day: '%y/%m/%d'
             }
-        }
+        };
         var yAxis = {
             endOnTick: true,
             gridLineColor: '#c0c0c0',
@@ -33,8 +40,8 @@
         var tooltip = {
             crosshairs: true,
             shared: true,
-            dateTimeLabelFormats:{
-              day: '%Y/%m/%d %a'
+            dateTimeLabelFormats: {
+                day: '%Y/%m/%d %a'
             }
         };
         var legend = {
@@ -50,10 +57,7 @@
         json.plotOptions = plotOptions;
         json.legend = legend;
         $.ajax({
-            url: 'http://localhost:8080',
-            data: {
-                filename: filename
-            },
+            url: $.logs.getPath(filename),
             type: 'get',
             dataType: 'text',
             success: function(csv) {
