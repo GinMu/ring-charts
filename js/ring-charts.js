@@ -9,7 +9,7 @@
             dateTimeLabelFormats: {
                 day: '%y/%m/%d'
             }
-        }
+        };
         var yAxis = {
             endOnTick: true,
             gridLineColor: '#c0c0c0',
