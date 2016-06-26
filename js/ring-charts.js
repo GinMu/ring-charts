@@ -24,13 +24,16 @@
             gridLineDashStyle: 'longdash'
         };
         var plotOptions = {
-            line: {
+            series: {
                 dataLabels: {
                     enabled: false,
                     allowOverlap: true,
                     rotation: 350,
                     y: -15,
-                    x: 10
+                    x: 10,
+                    formatter:function(){
+                      return this.y;
+                    }
                 },
                 enableMouseTracking: true
             }
@@ -41,9 +44,7 @@
         var tooltip = {
             crosshairs: true,
             shared: true,
-            dateTimeLabelFormats: {
-                day: '%Y/%m/%d %a'
-            }
+            xDateFormat: '%Y-%m-%d %a'
         };
         var legend = {
             y: 20
@@ -80,6 +81,15 @@
                     enabled: labels
                 },
                 enableMouseTracking: tracking
+            });
+        }
+    };
+    $.updateType = function(type) {
+        var chart = $('#container').highcharts();
+        var series = chart.series;
+        for (var i in series) {
+            series[i].update({
+                type: type
             });
         }
     };

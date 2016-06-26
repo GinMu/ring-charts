@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="bs-example" data-example-id="single-button-dropdown" style="text-align:center;margin-top:50px;">
+    <div class="bs-example" data-example-id="single-button-dropdown" style="text-align:center;margin-top:50px;min-width:800px;">
         <span style="margin-right:5px;">日志类型：</span>
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,8 +36,14 @@
                 <li text="躺倒鸭点击次数" filename="course_click.log"><a href="#">躺倒鸭点击次数</a></li>
             </ul>
         </div>
+        <label class="radio-inline" style="margin-left:20px;">
+            <input type="radio" name="inlineRadioOptions" id="line" value="line" checked> 折线图
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="inlineRadioOptions" id="column" value="column"> 柱状图
+        </label>
         <label class="checkbox-inline" style="margin-left:20px;">
-            <input type="checkbox" id="checkbox" value="option1"> 数据标识
+            <input type="checkbox" id="data-labels" value="data-labels"> 数据标识
         </label>
     </div>
     <div id="container" class="container">
@@ -58,13 +64,16 @@
             if (currentTitle === title) {
                 return;
             }
-            if ($('#checkbox').is(':checked')) {
-                $('#checkbox')[0].checked = false;
+            if ($('#data-labels').is(':checked')) {
+                $('#data-labels')[0].checked = false;
+            }
+            if (!$('#line').is(':checked')) {
+              $('#line')[0].checked = true;
             }
             dropdownMenu.text(title);
             $.logCharts(title, filename);
         });
-        $('#checkbox').off('click').on('click', function(e) {
+        $('#data-labels').off('click').on('click', function(e) {
             var checked = $(this).is(':checked');
             var labels,
                 tracking;
@@ -76,6 +85,11 @@
                 tracking = true;
             }
             $.seriesUpdate(labels, tracking);
+        });
+        $(".radio-inline input").off('click').on('click',function(){
+          var self = this;
+          var type = this.value;
+          $.updateType(type);
         });
     </script>
 </body>
