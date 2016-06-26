@@ -13,6 +13,7 @@
         var xAxis = {
             endOnTick: true,
             type: 'datetime',
+            startOnTick: true,
             dateTimeLabelFormats: {
                 day: '%y/%m/%d'
             }
