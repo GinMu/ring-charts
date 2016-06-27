@@ -95,6 +95,10 @@
             type: 'get',
             dataType: 'text',
             success: function(data) {
+                if (!data) {
+                    alert('无相关记录');
+                    return;
+                }
                 $.getOperationList(data);
             }
         });
@@ -103,8 +107,8 @@
         data = JSON.parse(data);
         var list = [];
         for (var i in data) {
-          var li = $.getOperationType(data[i]);
-          list.push(li);
+            var li = $.getOperationType(data[i]);
+            list.push(li);
         }
         $('#ol_list').append(list.join(''));
     };

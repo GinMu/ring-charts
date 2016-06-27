@@ -36,6 +36,10 @@
       $("#query").off('click').on('click',function(){
         var time = $('#dateTime').val();
         var uuid = $('#uuid').val();
+        if (!time || !uuid) {
+          alert('请输入时间或UUID');
+          return;
+        }
         if ($('#ol_list li').length > 0) {
           $('#ol_list').empty();
         }
