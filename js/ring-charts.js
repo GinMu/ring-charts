@@ -72,19 +72,6 @@
 		});
 	};
 
-	$.seriesUpdate = function(labels, tracking) {
-		var chart = $('#container').highcharts();
-		var series = chart.series;
-		for (var i in series) {
-			series[i].update({
-				dataLabels: {
-					enabled: labels
-				},
-				enableMouseTracking: tracking
-			});
-		}
-	};
-
 	$.searchUUID = function(time, uuid) {
 		$.ajax({
 			url: 'http://192.168.66.254:8000',
@@ -101,7 +88,7 @@
 	};
 	$.getOperationList = function(data) {
 		data = JSON.parse(data);
-    if (!data || data.length === 0) {
+		if (!data || data.length === 0) {
 			alert('无相关记录');
 			return;
 		}
@@ -171,6 +158,19 @@
 		}
 		html += '</li>';
 		return html;
+	};
+	
+	$.seriesUpdate = function(labels, tracking) {
+		var chart = $('#container').highcharts();
+		var series = chart.series;
+		for (var i in series) {
+			series[i].update({
+				dataLabels: {
+					enabled: labels
+				},
+				enableMouseTracking: tracking
+			});
+		}
 	};
 	$.updateType = function(type) {
 		var chart = $('#container').highcharts();

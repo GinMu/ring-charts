@@ -1,97 +1,90 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <title>铃声大全charts</title>
-    <script src="js/lib/jquery-3.0.0.min.js" charset="utf-8"></script>
-    <script src="js/lib/highcharts.js" charset="utf-8"></script>
-    <script src="js/lib/data.js" charset="utf-8"></script>
-    <script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
-    <script src="js/ring-charts.js" charset="utf-8"></script>
-    <script src="js/highcharts-theme.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="css/ring-charts.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-</head>
+	<head>
+		<meta charset="utf-8">
+		<title>铃声大全charts</title>
+		<script src="js/lib/jquery-3.0.0.min.js" charset="utf-8"></script>
+		<script src="js/lib/highcharts.js" charset="utf-8"></script>
+		<script src="js/lib/data.js" charset="utf-8"></script>
+		<script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
+		<script src="js/ring-charts.js" charset="utf-8"></script>
+		<script src="js/highcharts-theme.js" charset="utf-8"></script>
+		<link rel="stylesheet" href="css/ring-charts.css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+	</head>
 
-<body>
-    <div class="bs-example" data-example-id="single-button-dropdown" style="text-align:center;margin-top:50px;min-width:800px;">
-        <span style="margin-right:5px;">日志类型：</span>
-        <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	<body>
+		<div class="bs-example" data-example-id="single-button-dropdown" style="text-align:center;margin-top:50px;min-width:800px;">
+			<span style="margin-right:5px;">日志类型：</span>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span id="title" filename="devices.log">设备数量</span>
                 <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-                <li text="设备数量" filename="devices.log"><a href="#">设备数量</a></li>
-                <li text="新增彩铃用户" filename="new_vip_user.log"><a href="#">新增彩铃用户</a></li>
-                <li text="彩铃设置次数" filename="ring_set.log"><a href="#">彩铃设置次数</a></li>
-                <li text="点击设彩铃次数" filename="tap_set.log"><a href="#">点击设彩铃次数</a></li>
-                <li text="短信获取次数" filename="get_sms.log"><a href="#">短信获取次数</a></li>
-                <li text="我的点击次数" filename="my_click.log"><a href="#">我的点击次数</a></li>
-                <li text="推荐点击次数" filename="recommend_click.log"><a href="#">推荐点击次数</a></li>
-                <li text="苹果铃声点击次数" filename="apple_click.log"><a href="#">苹果铃声点击次数</a></li>
-                <li text="专题点击次数" filename="topic_click.log"><a href="#">专题点击次数</a></li>
-                <li text="酷音铃声点击次数" filename="kuyin_click.log"><a href="#">酷音铃声点击次数</a></li>
-                <li text="躺倒鸭点击次数" filename="course_click.log"><a href="#">躺倒鸭点击次数</a></li>
-            </ul>
-        </div>
-        <label class="radio-inline" style="margin-left:20px;">
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+					<li text="设备数量" filename="devices.log"><a href="#">设备数量</a></li>
+					<li text="新增彩铃用户" filename="new_vip_user.log"><a href="#">新增彩铃用户</a></li>
+					<li text="彩铃设置次数" filename="ring_set.log"><a href="#">彩铃设置次数</a></li>
+					<li text="点击设彩铃次数" filename="tap_set.log"><a href="#">点击设彩铃次数</a></li>
+					<li text="短信获取次数" filename="get_sms.log"><a href="#">短信获取次数</a></li>
+					<li text="我的点击次数" filename="my_click.log"><a href="#">我的点击次数</a></li>
+					<li text="推荐点击次数" filename="recommend_click.log"><a href="#">推荐点击次数</a></li>
+					<li text="苹果铃声点击次数" filename="apple_click.log"><a href="#">苹果铃声点击次数</a></li>
+					<li text="专题点击次数" filename="topic_click.log"><a href="#">专题点击次数</a></li>
+					<li text="酷音铃声点击次数" filename="kuyin_click.log"><a href="#">酷音铃声点击次数</a></li>
+					<li text="躺倒鸭点击次数" filename="course_click.log"><a href="#">躺倒鸭点击次数</a></li>
+				</ul>
+			</div>
+			<label class="radio-inline" style="margin-left:20px;">
             <input type="radio" name="inlineRadioOptions" id="line" value="line" checked> 折线图
         </label>
-        <label class="radio-inline">
+			<label class="radio-inline">
             <input type="radio" name="inlineRadioOptions" id="column" value="column"> 柱状图
         </label>
-        <label class="checkbox-inline" style="margin-left:20px;">
-            <input type="checkbox" id="data-labels" value="data-labels"> 数据标识
+			<label class="checkbox-inline" style="margin-left:20px;">
+            <input type="checkbox" id="data-labels" value="data-labels">数据标识
         </label>
-    </div>
-    <div id="container" class="container">
-    </div>
-    <script type="text/javascript">
-        var dropdownMenu;
-        $(document).ready(function() {
-            dropdownMenu = $("#title");
-            var initTitle = dropdownMenu.text();
-            var initFilename = dropdownMenu.attr('filename');
-            $.logCharts(initTitle, initFilename);
-        });
-        $("ul li").off("click").on("click", function() {
-            var self = this;
-            var currentTitle = dropdownMenu.text();
-            var title = self.getAttribute("text");
-            var filename = self.getAttribute("filename");
-            if (currentTitle === title) {
-                return;
-            }
-            if ($('#data-labels').is(':checked')) {
-                $('#data-labels')[0].checked = false;
-            }
-            if (!$('#line').is(':checked')) {
-              $('#line')[0].checked = true;
-            }
-            dropdownMenu.text(title);
-            $.logCharts(title, filename);
-        });
-        $('#data-labels').off('click').on('click', function(e) {
-            var checked = $(this).is(':checked');
-            var labels,
-                tracking;
-            if (checked) {
-                labels = true;
-                tracking = false;
-            } else {
-                labels = false;
-                tracking = true;
-            }
-            $.seriesUpdate(labels, tracking);
-        });
-        $(".radio-inline input").off('click').on('click',function(){
-          var self = this;
-          var type = this.value;
-          $.updateType(type);
-        });
-    </script>
-</body>
+		</div>
+		<div id="container" class="container">
+		</div>
+		<script type="text/javascript">
+			var dropdownMenu;
+			$(document).ready(function() {
+				dropdownMenu = $("#title");
+				var initTitle = dropdownMenu.text();
+				var initFilename = dropdownMenu.attr('filename');
+				$.logCharts(initTitle, initFilename);
+			});
+			$("ul li").off("click").on("click", function() {
+				var self = this;
+				var currentTitle = dropdownMenu.text();
+				var title = self.getAttribute("text");
+				var filename = self.getAttribute("filename");
+				if (currentTitle === title) {
+					return;
+				}
+				if ($('#data-labels').is(':checked')) {
+					$('#data-labels')[0].checked = false;
+				}
+				if (!$('#line').is(':checked')) {
+					$('#line')[0].checked = true;
+				}
+				dropdownMenu.text(title);
+				$.logCharts(title, filename);
+			});
+			$('#data-labels').off('click').on('click', function(e) {
+				var checked = $(this).is(':checked');
+				var labels = checked;
+				var tracking = !labels;
+				$.seriesUpdate(labels, tracking);
+			});
+			$(".radio-inline input").off('click').on('click', function() {
+				var self = this;
+				var type = this.value;
+				$.updateType(type);
+			});
+		</script>
+	</body>
 
 </html>
