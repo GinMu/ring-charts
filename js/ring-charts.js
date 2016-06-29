@@ -95,7 +95,7 @@
             type: 'get',
             dataType: 'text',
             success: function(data) {
-                if (!data) {
+                if (!data || data.length === 0) {
                     alert('无相关记录');
                     return;
                 }
