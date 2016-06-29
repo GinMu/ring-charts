@@ -33,6 +33,10 @@
         </div>
     </div>
     <script type="text/javascript">
+      $(document).ready(function(){
+      	var currentDate = new Date(+new Date() + 8 * 3600 * 1000).toISOString().substring(0,10);
+      	$('#dateTime').val(currentDate);
+      });
       $("#query").off('click').on('click',function(){
         var time = $('#dateTime').val();
         var uuid = $('#uuid').val();

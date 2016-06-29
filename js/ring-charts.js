@@ -141,7 +141,7 @@
                 html += '程序升级:' + list.version;
                 break;
             case 8:
-                html += '点击appstore评论:'
+                html += '点击appstore评论:';
                 break;
             case 9:
 
