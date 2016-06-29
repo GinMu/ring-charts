@@ -21,6 +21,7 @@
                     <input type="text" class="form-control" id="dateTime" onclick="WdatePicker({lang:'zh-cn'})" readonly="readonly" style="background-color: #fff;">
                     <span class="input-group-addon">UUID</span>
                     <input type="input" class="form-control" id="uuid" name="name" value="">
+                    <span class="input-group-addon glyphicon glyphicon-remove"></span>
                 </div>
             </div>
             <div class="col-xs-2">
@@ -36,6 +37,9 @@
       $(document).ready(function(){
       	var currentDate = new Date(+new Date() - 16 * 3600 * 1000).toISOString().substring(0,10);
       	$('#dateTime').val(currentDate);
+      });
+      $('.glyphicon-remove').off('click').on('click',function(){
+      	$('#uuid').val("");
       });
       $("#query").off('click').on('click',function(){
         var time = $('#dateTime').val();
