@@ -26,7 +26,7 @@
 		var plotOptions = {
 			series: {
 				dataLabels: {
-					enabled: false,
+					enabled: true,
 					allowOverlap: true,
 					rotation: 350,
 					y: -15,
@@ -35,7 +35,7 @@
 						return this.y;
 					}
 				},
-				enableMouseTracking: true
+				enableMouseTracking: false
 			}
 		};
 		var credits = {

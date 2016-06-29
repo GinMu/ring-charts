@@ -43,7 +43,7 @@
             <input type="radio" name="inlineRadioOptions" id="column" value="column"> 柱状图
         </label>
 			<label class="checkbox-inline" style="margin-left:20px;">
-            <input type="checkbox" id="data-labels" value="data-labels">数据标识
+            <input type="checkbox" id="data-labels" value="data-labels" checked>数据标识
         </label>
 		</div>
 		<div id="container" class="container">
@@ -64,8 +64,8 @@
 				if (currentTitle === title) {
 					return;
 				}
-				if ($('#data-labels').is(':checked')) {
-					$('#data-labels')[0].checked = false;
+				if (!$('#data-labels').is(':checked')) {
+					$('#data-labels')[0].checked = true;
 				}
 				if (!$('#line').is(':checked')) {
 					$('#line')[0].checked = true;
