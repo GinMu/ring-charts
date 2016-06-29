@@ -34,7 +34,7 @@
     </div>
     <script type="text/javascript">
       $(document).ready(function(){
-      	var currentDate = new Date(+new Date() + 8 * 3600 * 1000).toISOString().substring(0,10);
+      	var currentDate = new Date(+new Date() - 16 * 3600 * 1000).toISOString().substring(0,10);
       	$('#dateTime').val(currentDate);
       });
       $("#query").off('click').on('click',function(){
