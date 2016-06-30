@@ -72,9 +72,88 @@
 		});
 	};
 
+	$.logsMaps = function(time) {
+		var chart = {
+			spacingBottom: 30
+		};
+		var tooltip = {
+			formatter: function() {
+				return this.point.name + "设备数量:" + this.point.value;
+			}
+		};
+		var credits = {
+			enabled: false
+		};
+		var title = {
+			text: '铃声大全各省用户分布图'
+		};
+		var legend = {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'middle'
+		};
+		var colorAxis = {
+			min: 0,
+			minColor: '#E6E7E8',
+			maxColor: '#005645',
+			labels: {
+				style: {
+					"color": "red",
+					"fontWeight": "bold"
+				}
+			}
+		};
+		var plotOptions = {
+			map: {
+				states: {
+					hover: {
+						color: '#EEDD66'
+					}
+				},
+				dataLabels: {
+					enabled: true,
+					allowOverlap: true
+				}
+			}
+		};
+		var json = {};
+		json.chart = chart;
+		json.tooltip = tooltip;
+		json.credits = credits;
+		json.title = title;
+		json.legend = legend;
+		json.colorAxis = colorAxis;
+		json.plotOptions = plotOptions;
+		var region = Highcharts.geojson(Highcharts.maps['countries/cn/custom/cn-all-china']);
+		$.ajax({
+			url: 'http://192.168.66.254:8000/region',
+			data: {
+				time: time
+			},
+			type: 'get',
+			dataType: 'text',
+			success: function(data) {
+				var devices = JSON.parse(data);
+				$.each(region, function(i) {
+					this.value = devices[i];
+				});
+				var series = [{
+					data: region,
+					name: '中国',
+					dataLabels: {
+						enabled: true,
+						format: '{point.properties.cn-name}'
+					}
+				}];
+				json.series = series;
+				$('#container').highcharts('Map', json);
+			}
+		});
+	};
+
 	$.searchUUID = function(time, uuid) {
 		$.ajax({
-			url: 'http://192.168.66.254:8000',
+			url: 'http://192.168.66.254:8000/search',
 			data: {
 				time: time,
 				uuid: uuid
@@ -159,7 +238,7 @@
 		html += '</li>';
 		return html;
 	};
-	
+
 	$.seriesUpdate = function(labels, tracking) {
 		var chart = $('#container').highcharts();
 		var series = chart.series;
@@ -176,6 +255,7 @@
 		var chart = $('#container').highcharts();
 		var series = chart.series;
 		for (var i in series) {
+			console.log(series[i].xAxis);
 			series[i].update({
 				type: type
 			});
