@@ -150,7 +150,10 @@
                 }];
                 json.series = series;
                 $('#container').highcharts('Map', json);
-            }
+            },
+						error: function(xhr,status){
+							alert('无相关文件');
+						}
         });
     };
 

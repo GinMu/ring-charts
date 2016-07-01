@@ -11,8 +11,13 @@ app.all('/*/', function(req, res, next) {
 app.get('/chart', function(req, res) {
     var filename = req.query.filename;
     var path = '/incoming/devlope/ringcharts/' + filename;
-    var data = fs.readFileSync(path, 'utf8');
-    res.send(data);
+    fs.readFile(path, 'utf8', function(err, data) {
+        if (err) {
+            res.send(404);
+        } else {
+            res.send(200, data);
+        }
+    });
 });
 app.get('/search', function(req, res) {
     var array = [];
@@ -39,7 +44,12 @@ app.get('/search', function(req, res) {
 app.get('/region', function(req, res) {
     var time = req.query.time;
     var path = "/incoming/devlope/regionMaps/" + time + ".log";
-    var data = fs.readFileSync(path, 'utf8');
-    res.send(data);
+    fs.readFile(path, 'utf8', function(err, data) {
+        if (err) {
+            res.send(404);
+        } else {
+            res.send(200, data);
+        }
+    });
 });
 app.listen(8000);
