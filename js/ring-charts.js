@@ -7,6 +7,7 @@
     };
 
     $.logCharts = function(titles, filename) {
+        var enabled = $('#data-labels').is(':checked');
         var title = {
             text: titles
         };
@@ -26,7 +27,7 @@
         var plotOptions = {
             series: {
                 dataLabels: {
-                    enabled: true,
+                    enabled: enabled,
                     allowOverlap: true,
                     rotation: 350,
                     y: -15,
@@ -35,7 +36,7 @@
                         return this.y;
                     }
                 },
-                enableMouseTracking: false
+                enableMouseTracking: !enabled
             }
         };
         var credits = {
