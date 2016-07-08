@@ -33,7 +33,7 @@
                     y: -15,
                     x: 10,
                     formatter: function() {
-                        return $.convertToPercent(this.y);
+                        return $.convertToPercent(type,this.y);
                     },
                 },
                 enableMouseTracking: !enabled
@@ -50,7 +50,7 @@
                 var y = this.y;
                 var name = this.series.name;
                 var color = this.series.color;
-                return '<span style="color:' + color + ';">\u25CF</span>' + name + ':<b>' + $.convertToPercent(y) + '</b><br/>';
+                return '<span style="color:' + color + ';">\u25CF</span>' + name + ':<b>' + $.convertToPercent(type,y) + '</b><br/>';
             }
         };
         var legend = {
@@ -273,9 +273,8 @@
             });
         }
     };
-    $.convertToPercent = function(number) {
-        var percent = number / 100;
-        if (percent < 1) {
+    $.convertToPercent = function(type,number) {
+        if (type === "percent-title") {
             return number.toFixed(1) + '%';
         }
         return number;
