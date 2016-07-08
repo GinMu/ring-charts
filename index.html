@@ -1,87 +1,127 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<title>铃声大全charts</title>
-		<script src="js/lib/jquery-3.0.0.min.js" charset="utf-8"></script>
-		<script src="js/lib/highcharts.js" charset="utf-8"></script>
-		<script src="js/lib/data.js" charset="utf-8"></script>
-		<script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
-		<script src="js/ring-charts.js" charset="utf-8"></script>
-		<script src="js/lib/highcharts-theme.js" charset="utf-8"></script>
-		<link rel="stylesheet" href="css/ring-charts.css" media="screen" title="no title" charset="utf-8">
-		<link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-	</head>
+<head>
+	<meta charset="utf-8">
+	<title>铃声大全charts</title>
+	<script src="js/lib/jquery-3.0.0.min.js" charset="utf-8"></script>
+	<script src="js/lib/highcharts.js" charset="utf-8"></script>
+	<script src="js/lib/data.js" charset="utf-8"></script>
+	<script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
+	<script src="js/ring-charts.js" charset="utf-8"></script>
+	<script src="js/lib/highcharts-theme.js" charset="utf-8"></script>
+	<link rel="stylesheet" href="css/ring-charts.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+</head>
 
-	<body>
-		<div class="bs-example" data-example-id="single-button-dropdown" style="text-align:center;margin-top:50px;min-width:800px;">
+<body>
+	<div class="container">
+		<div class="bs-example" style="margin-top:10px;">
+			<ul class="nav nav-tabs">
+				<li role="presentation" class="active" type="number"><a href="#">Number</a></li>
+				<li role="presentation" type="percent"><a href="#">Percent</a></li>
+			</ul>
+		</div>
+		<div class="bs-example shown" id="number" data-example-id="single-button-dropdown" style="text-align:center;margin-top:20px;min-width:800px;">
 			<span style="margin-right:5px;">日志类型：</span>
 			<div class="btn-group">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span id="title" filename="devices.log">设备数量</span>
-                <span class="caret"></span>
-            </button>
+					<span id="number-title" filename="devices.log">设备数量</span>
+					<span class="caret"></span>
+				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-					<li text="设备数量" filename="devices.log"><a href="#">设备数量</a></li>
-					<li text="新增彩铃用户" filename="new_vip_user.log"><a href="#">新增彩铃用户</a></li>
-					<li text="彩铃设置次数" filename="ring_set.log"><a href="#">彩铃设置次数</a></li>
-					<li text="点击设彩铃次数" filename="tap_set.log"><a href="#">点击设彩铃次数</a></li>
-					<li text="短信获取次数" filename="get_sms.log"><a href="#">短信获取次数</a></li>
-					<li text="我的点击次数" filename="my_click.log"><a href="#">我的点击次数</a></li>
-					<li text="推荐点击次数" filename="recommend_click.log"><a href="#">推荐点击次数</a></li>
-					<li text="苹果铃声点击次数" filename="apple_click.log"><a href="#">苹果铃声点击次数</a></li>
-					<li text="专题点击次数" filename="topic_click.log"><a href="#">专题点击次数</a></li>
-					<li text="酷音铃声点击次数" filename="kuyin_click.log"><a href="#">酷音铃声点击次数</a></li>
-					<li text="躺倒鸭点击次数" filename="course_click.log"><a href="#">躺倒鸭点击次数</a></li>
+					<li text="设备数量" filename="devices.log" type="number-title"><a href="#">设备数量</a></li>
+					<li text="新增彩铃用户" filename="new_vip_user.log" type="number-title"><a href="#">新增彩铃用户</a></li>
+					<li text="彩铃设置次数" filename="ring_set.log" type="number-title"><a href="#">彩铃设置次数</a></li>
+					<li text="点击设彩铃次数" filename="tap_set.log" type="number-title"><a href="#">点击设彩铃次数</a></li>
+					<li text="短信获取次数" filename="get_sms.log" type="number-title"><a href="#">短信获取次数</a></li>
+					<li text="我的点击次数" filename="my_click.log" type="number-title"><a href="#">我的点击次数</a></li>
+					<li text="推荐点击次数" filename="recommend_click.log" type="number-title"><a href="#">推荐点击次数</a></li>
+					<li text="苹果铃声点击次数" filename="apple_click.log" type="number-title"><a href="#">苹果铃声点击次数</a></li>
+					<li text="专题点击次数" filename="topic_click.log" type="number-title"><a href="#">专题点击次数</a></li>
+					<li text="酷音铃声点击次数" filename="kuyin_click.log" type="number-title"><a href="#">酷音铃声点击次数</a></li>
+					<li text="躺倒鸭点击次数" filename="course_click.log" type="number-title"><a href="#">躺倒鸭点击次数</a></li>
 				</ul>
 			</div>
 			<label class="radio-inline" style="margin-left:20px;">
-            <input type="radio" name="inlineRadioOptions" id="line" value="line" checked> 折线图
-        </label>
+				<input type="radio" name="inlineRadioOptions" id="line" value="line" checked> 折线图
+			</label>
 			<label class="radio-inline">
-            <input type="radio" name="inlineRadioOptions" id="column" value="column"> 柱状图
-        </label>
+				<input type="radio" name="inlineRadioOptions" id="column" value="column"> 柱状图
+			</label>
 			<label class="checkbox-inline" style="margin-left:20px;">
-            <input type="checkbox" id="data-labels" value="data-labels" checked>数据标识
-        </label>
+				<input type="checkbox" id="number-title-data-labels" value="data-labels" checked>数据标识
+			</label>
 		</div>
-		<div id="container" class="container">
+		<div class="bs-example hidden" id="percent" data-example-id="single-button-dropdown" style="text-align:center;margin-top:20px;min-width:800px;">
+			<span style="margin-right:5px;">百分比类型：</span>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span id="percent-title" filename="devices_percent.log">设备数量百分比</span>
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+					<li text="设备数量百分比" filename="devices_percent.log" type="percent-title"><a href="#">设备数量百分比</a></li>
+					<li text="新增彩铃用户百分比" filename="new_vip_user_percent.log" type="percent-title"><a href="#">新增彩铃用户百分比</a></li>
+					<li text="点击设彩铃次数百分比" filename="tap_set_percent.log" type="percent-title"><a href="#">点击设彩铃次数百分比</a></li>
+					<li text="短信获取次数百分比" filename="get_sms_percent.log" type="percent-title"><a href="#">短信获取次数百分比</a></li>
+				</ul>
+			</div>
+			<label class="checkbox-inline" style="margin-left:20px;">
+				<input type="checkbox" id="percent-title-data-labels" value="data-labels" checked>数据标识
+			</label>
 		</div>
-		<script type="text/javascript">
-			var dropdownMenu;
-			$(document).ready(function() {
-				dropdownMenu = $("#title");
-				var initTitle = dropdownMenu.text();
-				var initFilename = dropdownMenu.attr('filename');
-				$.logCharts(initTitle, initFilename);
-			});
-			$("ul li").off("click").on("click", function() {
-				var self = this;
-				var currentTitle = dropdownMenu.text();
-				var title = self.getAttribute("text");
-				var filename = self.getAttribute("filename");
-				if (currentTitle === title) {
-					return;
-				}
-				if (!$('#line').is(':checked')) {
-					$('#line')[0].checked = true;
-				}
-				dropdownMenu.text(title);
-				$.logCharts(title, filename);
-			});
-			$('#data-labels').off('click').on('click', function(e) {
-				var checked = $(this).is(':checked');
-				var labels = checked;
-				var tracking = !labels;
-				$.seriesUpdate(labels, tracking);
-			});
-			$(".radio-inline input").off('click').on('click', function() {
-				var self = this;
-				var type = this.value;
-				$.updateType(type);
-			});
-		</script>
-	</body>
+		<div id="container" class="charts-container">
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var dropdownMenu = $("#number-title");
+			var initTitle = dropdownMenu.text();
+			var initFilename = dropdownMenu.attr('filename');
+			$.logCharts('number-title', initTitle, initFilename);
+		});
+		$("ul.dropdown-menu li").off("click").on("click", function() {
+			var self = this;
+			var type = self.getAttribute("type");
+			var dropdownMenu = $('#' + type);
+			var currentTitle = dropdownMenu.text();
+			var title = self.getAttribute("text");
+			var filename = self.getAttribute("filename");
+			if (currentTitle === title) {
+				return;
+			}
+			if (!$('#line').is(':checked')) {
+				$('#line')[0].checked = true;
+			}
+			dropdownMenu.text(title);
+			dropdownMenu.attr('filename', filename);
+			$.logCharts(type, title, filename);
+		});
+		$('.nav li').off('click').on('click', function() {
+			var self = this;
+			var type = self.getAttribute('type');
+			$('li.active').removeClass('active');
+			$(self).addClass('active');
+			$('.shown').removeClass('shown').addClass('hidden');
+			$('#' + type).removeClass('hidden').addClass('shown');
+			var dropdownMenu = $('#' + type + '-title');
+			var title = dropdownMenu.text();
+			var filename = dropdownMenu.attr("filename");
+			$.logCharts(type + '-title', title, filename);
+		});
+		$('#number-title-data-labels,#percent-title-data-labels').off('click').on('click', function(e) {
+			var checked = $(this).is(':checked');
+			var labels = checked;
+			var tracking = !labels;
+			$.seriesUpdate(labels, tracking);
+		});
+		$(".radio-inline input").off('click').on('click', function() {
+			var self = this;
+			var type = this.value;
+			$.updateType(type);
+		});
+	</script>
+</body>
 
 </html>

@@ -6,8 +6,8 @@
         }
     };
 
-    $.logCharts = function(titles, filename) {
-        var enabled = $('#data-labels').is(':checked');
+    $.logCharts = function(type, titles, filename) {
+        var enabled = $('#' + type + '-data-labels').is(':checked');
         var title = {
             text: titles
         };
@@ -33,8 +33,8 @@
                     y: -15,
                     x: 10,
                     formatter: function() {
-                        return this.y;
-                    }
+                        return $.convertToPercent(this.y);
+                    },
                 },
                 enableMouseTracking: !enabled
             }
@@ -45,7 +45,13 @@
         var tooltip = {
             crosshairs: true,
             shared: true,
-            xDateFormat: '%Y-%m-%d %a'
+            xDateFormat: '%Y-%m-%d %a',
+            pointFormatter: function() {
+                var y = this.y;
+                var name = this.series.name;
+                var color = this.series.color;
+                return '<span style="color:' + color + ';">\u25CF</span>' + name + ':<b>' + $.convertToPercent(y) + '</b><br/>';
+            }
         };
         var legend = {
             y: 20
@@ -152,9 +158,9 @@
                 json.series = series;
                 $('#container').highcharts('Map', json);
             },
-						error: function(xhr,status){
-							alert('无相关文件');
-						}
+            error: function(xhr, status) {
+                alert('无相关文件');
+            }
         });
     };
 
@@ -266,5 +272,12 @@
                 type: type
             });
         }
+    };
+    $.convertToPercent = function(number) {
+        var percent = number / 100;
+        if (percent < 1) {
+            return number.toFixed(1) + '%';
+        }
+        return number;
     };
 }(jQuery, window));
