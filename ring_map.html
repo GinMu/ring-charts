@@ -5,13 +5,6 @@
 	<meta charset="UTF-8" />
 	<title>各省分布图</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-	<script src="js/lib/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/lib/highcharts.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/lib/map.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/lib/data.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/lib/cn-china.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/ring-charts.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/lib/My97DatePicker/WdatePicker.js"></script>
 </head>
 
 <body>
@@ -23,6 +16,13 @@
 		<button class="btn btn-sm btn-primary" id="query" style="margin-left:40px;">查询</button>
 	</div>
 	<div id="container" style="height: 500px; min-width: 800px; max-width: 1000px; margin: 30px auto 0;"></div>
+	<script src="js/lib/jquery-3.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/highcharts.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/map.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/data.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/cn-china.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/ring-charts.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/lib/My97DatePicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			var currentDate = new Date(+new Date() - 16 * 3600 * 1000).toISOString().substring(0,10);
