@@ -3,12 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>铃声大全charts</title>
-	<script src="js/lib/jquery-3.0.0.min.js" charset="utf-8"></script>
-	<script src="js/lib/highcharts.js" charset="utf-8"></script>
-	<script src="js/lib/data.js" charset="utf-8"></script>
-	<script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
-	<script src="js/lib/highcharts-theme.js" charset="utf-8"></script>
+	<title>铃声大全数据图表</title>
 	<link rel="stylesheet" href="css/ring-charts.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
 </head>
@@ -73,6 +68,13 @@
 		<div id="container" class="charts-container">
 		</div>
 	</div>
+	<script src="js/lib/jquery-3.0.0.min.js" charset="utf-8"></script>
+	<script src="js/lib/highcharts.js" charset="utf-8"></script>
+	<script src="js/lib/data.js" charset="utf-8"></script>
+	<script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
+	<script src="js/lib/highcharts-theme.js" charset="utf-8"></script>
+	<script src="js/ring-charts-event.js" charset="utf-8"></script>
+	<script src="js/ring-charts.js" charset="utf-8"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var dropdownMenu = $("#number-title");
@@ -81,8 +83,6 @@
 			$.logCharts('number-title', initTitle, initFilename);
 		});
 	</script>
-	<script src="js/ring-charts-event.js" charset="utf-8"></script>
-	<script src="js/ring-charts.js" charset="utf-8"></script>
 </body>
 
 </html>
