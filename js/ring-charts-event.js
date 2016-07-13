@@ -60,7 +60,7 @@
     });
     $(".radio-inline input").off('click').on('click', function() {
         var self = this;
-        var type = this.value;
+        var type = self.value;
         $.updateType(type);
     });
     $('#query').off('click').on('click', function() {
