@@ -67,6 +67,9 @@
         var date = $('#dateTime').val();
         $.logsMaps(date);
     });
+    $('.glyphicon-remove').off('click').on('click',function(){
+      $('#uuid-text').val('');
+    });
 
     $.stateChange = function(type) {
         $('#ring-charts').removeClass('hidden');
