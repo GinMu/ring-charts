@@ -36,7 +36,7 @@ gulp.task("minify-js", function() {
 
 gulp.task("livereload", function() {
 	livereload.listen();
-	gulp.src(["index.html"])
+	gulp.src(["index.html",'management.html'])
 		.pipe(htmlhint())
 		.pipe(livereload())
 		.pipe(htmlhint.reporter());
