@@ -66,6 +66,14 @@ body {
   background-color: #428bca;
 }
 
+.nav-sidebar > li {
+  margin-bottom: 20px;
+}
+
+.nav-sidebar > li:first-child{
+  margin-bottom: 0;
+}
+
 
 /*
  * Main content

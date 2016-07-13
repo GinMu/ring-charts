@@ -1,52 +1,39 @@
 (function($, undefined) {
-    $('#nav-data li').off('click').on('click', function() {
-        $('#ring-charts').removeClass('hidden');
+    $('.nav-sidebar li').off('click').on('click', function() {
         var self = this;
         var type = self.getAttribute('type');
         $('li.active').removeClass('active');
         $(self).addClass('active');
-        $('.shown').removeClass('shown').addClass('hidden');
-        $('#' + type).removeClass('hidden').addClass('shown');
-        var dropdownMenu = $('#' + type + '-title');
-        var title = dropdownMenu.text();
-        var filename = dropdownMenu.attr("filename");
-        $.logCharts(type + '-title', title, filename);
+        if (type === 'uuid') {
+            $('#ring-charts').addClass('hidden');
+            $('#ring-uuid').removeClass('hidden');
+            var currentDates = new Date(+new Date() - 16 * 3600 * 1000).toISOString().substring(0, 10);
+            $('#uuid-dateTime').val(currentDates);
+        } else {
+            $.stateChange(type);
+            if (type === 'region') {
+                var currentDate = new Date(+new Date() - 16 * 3600 * 1000).toISOString().substring(0, 10);
+                $('#dateTime').val(currentDate);
+                $.logsMaps(currentDate);
+            } else {
+                var dropdownMenu = $('#' + type + '-title');
+                var title = dropdownMenu.text();
+                var filename = dropdownMenu.attr("filename");
+                $.logCharts(type + '-title', title, filename);
+            }
+        }
     });
-    $('#nav-region li').off('click').on('click',function(){
-      $('#ring-charts').removeClass('hidden');
-      var self = this;
-      var type = self.getAttribute('type');
-      $('li.active').removeClass('active');
-      $(self).addClass('active');
-      $('.shown').removeClass('shown').addClass('hidden');
-      $('#' + type).removeClass('hidden').addClass('shown');
-      var currentDate = new Date(+new Date() - 16 * 3600 * 1000).toISOString().substring(0,10);
-			$('#dateTime').val(currentDate);
-      $.logsMaps(currentDate);
-    });
-    $('#nav-uuid li').off('click').on('click',function(){
-      $('#ring-charts').addClass('hidden');
-      $('#ring-uuid').removeClass('hidden');
-      var self = this;
-      var type = self.getAttribute('type');
-      $('li.active').removeClass('active');
-      $(self).addClass('active');
-      $('.shown').removeClass('shown').addClass('hidden');
-      $('#' + type).removeClass('hidden').addClass('shown');
-      var currentDate = new Date(+new Date() - 16 * 3600 * 1000).toISOString().substring(0,10);
-      $('#uuid-dateTime').val(currentDate);
-    });
-    $('#uuid-query').off('click').on('click',function(){
-      var time = $('#uuid-dateTime').val();
-      var uuid = $('#uuid-text').val();
-      if (!time || !uuid) {
-        alert('请输入时间或UUID');
-        return;
-      }
-      if ($('#ol_list li').length > 0) {
-        $('#ol_list').empty();
-      }
-      $.searchUUID(time,uuid);
+    $('#uuid-query').off('click').on('click', function() {
+        var time = $('#uuid-dateTime').val();
+        var uuid = $('#uuid-text').val();
+        if (!time || !uuid) {
+            alert('请输入时间或UUID');
+            return;
+        }
+        if ($('#ol_list li').length > 0) {
+            $('#ol_list').empty();
+        }
+        $.searchUUID(time, uuid);
     });
     $("ul.dropdown-menu li").off("click").on("click", function() {
         var self = this;
@@ -76,8 +63,15 @@
         var type = this.value;
         $.updateType(type);
     });
-    $('#query').off('click').on('click',function(){
-			var date = $('#dateTime').val();
-			$.logsMaps(date);
-		});
+    $('#query').off('click').on('click', function() {
+        var date = $('#dateTime').val();
+        $.logsMaps(date);
+    });
+
+    $.stateChange = function(type) {
+        $('#ring-charts').removeClass('hidden');
+        $('#ring-uuid').addClass('hidden');
+        $('.shown').removeClass('shown').addClass('hidden');
+        $('#' + type).removeClass('hidden').addClass('shown');
+    };
 }(jQuery, window));
