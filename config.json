@@ -1,12 +1,18 @@
 {
-	"jshint_src": [
-		"js/*.js"
-	],
-	"htmlhint_src": [
-		"*.html"
-	],
-	"uglify_src": [
-		"js/*.js"
-	],
-	"uglify_dest": "dist"
+    "js_src": [
+        "js/*.js"
+    ],
+    "html_src": [
+        "*.html"
+    ],
+    "css_src": [
+        "css/*.css"
+    ],
+    "js_dest": "js/assert/",
+    "css_dest": "css/assert/",
+    "livereload_src": [
+        "js/*.js",
+        "*.html",
+        "css/*.css"
+    ]
 }
